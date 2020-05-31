@@ -1,0 +1,25 @@
+{
+  "name": "ExternalDevice",
+  "keywords": "bus device eeprom wire",
+  "description": "Library to abstract external devices.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ozeroio/ExternalDevice.git"
+  },
+  "authors": [
+    {
+      "name": "Dalmir da Silva",
+      "email": "dalmirdasilva@gmail.com",
+      "maintainer": true
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "Wire",
+      "frameworks": "arduino"
+    }
+  ],
+  "version": "0.0.1",
+  "frameworks": "arduino",
+  "platforms": "*"
+}
