@@ -1,5 +1,5 @@
 {
-  "name": "ExternalDevice",
+  "name": "OzeroDevice",
   "keywords": "bus device eeprom wire",
   "description": "Library to abstract external devices.",
   "repository": {
