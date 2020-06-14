@@ -40,7 +40,7 @@ int32_t EepromBasedWiredDevice::readBlock(int32_t address, uint8_t *buf, int32_t
 
   Wire.requestFrom((int16_t) getDeviceAddress(), len);
   while (!Wire.available() && --tries > 0) {
-    delayMicroseconds(RETRIES_DELAY_MICROS);
+    delay(1);
   }
   if (tries <= 0) {
     return (int32_t)(-5);
