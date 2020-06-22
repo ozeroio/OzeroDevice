@@ -50,7 +50,7 @@ int32_t EepromBasedWiredDevice::readBlock(int32_t address, uint8_t *buf, int32_t
     delayMicroseconds(RETRIES_DELAY_MICROS);
   }
   if (tries <= 0) {
-    return (int32_t) (-5);
+    return (int32_t) (-TIMEOUT_ERROR_CODE);
   }
   for (i = 0; i < len && Wire.available(); i++) {
     int16_t r = Wire.read();
