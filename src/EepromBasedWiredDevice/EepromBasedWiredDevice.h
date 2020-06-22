@@ -26,6 +26,9 @@ class EepromBasedWiredDevice : public WiredDevice {
   // Default write cycle time.
   const static uint8_t WRITE_CYCLE_TIME_MILLS = 5;
 
+  // Timeout error code.
+  const static int8_t TIMEOUT_ERROR_CODE = -5;
+
   // Depending on the size of the eeprom, it might have 1 or 2 bytes of address.
   int8_t addressSize;
 
