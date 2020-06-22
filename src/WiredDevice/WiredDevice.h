@@ -23,7 +23,7 @@ public:
    *
    * @param address       The i2c device address.
    */
-   WiredDevice(uint8_t deviceAddress);
+  WiredDevice(uint8_t deviceAddress);
 
   /**
    * Public constructor for esp8266 device.
