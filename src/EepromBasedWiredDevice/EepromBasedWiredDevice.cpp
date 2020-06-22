@@ -38,17 +38,19 @@ int32_t EepromBasedWiredDevice::readBlock(int32_t address, uint8_t *buf, int32_t
   }
   delay(writeCycleTime);
 
-  Wire.requestFrom((int16_t) getDeviceAddress(), len);
-//  while (!Wire.available() && --tries > 0) {
-//    delay(1);
-//  }
-  while (Wire.available());
+  // Underling libraries use a small buffer for i2c read.
+  // Also, some implementation use a uint8_t as len type.
+  // So, to be save, lets limit len to BUFFER_LENGTH
+  if (len > BUFFER_LENGTH) {
+    len = BUFFER_LENGTH;
+  }
 
-//  while (!Wire.available() && --tries > 0) {
-//    delayMicroseconds(RETRIES_DELAY_MICROS);
-//  }
+  Wire.requestFrom((int16_t) getDeviceAddress(), len);
+  while (!Wire.available() && --tries > 0) {
+    delayMicroseconds(RETRIES_DELAY_MICROS);
+  }
   if (tries <= 0) {
-    return (int32_t) (-TIMEOUT_ERROR_CODE);
+    return (int32_t) (-5);
   }
   for (i = 0; i < len && Wire.available(); i++) {
     int16_t r = Wire.read();
