@@ -1,8 +1,7 @@
 #include "WiredDevice.h"
 #include <Wire.h>
 
-WiredDevice::WiredDevice(uint8_t deviceAddress)
-    : deviceAddress(deviceAddress) {
+WiredDevice::WiredDevice(uint8_t deviceAddress) : deviceAddress(deviceAddress) {
 
   // Begins the i2c module.
   Wire.begin();

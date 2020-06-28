@@ -2,8 +2,12 @@
 #include <Wire.h>
 #include "RegisterBasedWiredDevice.h"
 
-RegisterBasedWiredDevice::RegisterBasedWiredDevice(uint8_t address)
-    : RegisterBasedDevice(), WiredDevice(address) {
+RegisterBasedWiredDevice::RegisterBasedWiredDevice(uint8_t deviceAddress)
+    : RegisterBasedDevice(), WiredDevice(deviceAddress) {
+}
+
+RegisterBasedWiredDevice::RegisterBasedWiredDevice(uint8_t sdaPin, uint8_t sclPin, uint8_t deviceAddress)
+    : RegisterBasedDevice(), WiredDevice(sdaPin, sclPin, deviceAddress) {
 }
 
 int16_t RegisterBasedWiredDevice::readRegisterBlock(uint8_t reg, uint8_t *buf, int16_t len) {

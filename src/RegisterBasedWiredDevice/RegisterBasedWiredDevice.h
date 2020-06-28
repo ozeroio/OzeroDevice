@@ -21,9 +21,18 @@ public:
   /**
    * Public constructor
    *
-   * @param address       The wire address.
+   * @param deviceAddress       The wire address.
    */
-  RegisterBasedWiredDevice(uint8_t address);
+  RegisterBasedWiredDevice(uint8_t deviceAddress);
+
+  /**
+   * Public constructor for devices that support custom data and clock pins.
+   *
+   * @param sdaPin                The wire data pin.
+   * @param sclPin                The wire clock pin.
+   * @param deviceAddress         The wire address.
+   */
+  RegisterBasedWiredDevice(uint8_t sdaPin, uint8_t sclPin, uint8_t deviceAddress);
 
   /**
    * Reads values from the device, starting by the reg register.
