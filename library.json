@@ -4,7 +4,7 @@
   "description": "Library to abstract external devices.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ozeroio/ExternalDevice.git"
+    "url": "https://github.com/ozeroio/OzeroDevice.git"
   },
   "authors": [
     {
