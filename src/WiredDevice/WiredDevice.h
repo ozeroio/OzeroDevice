@@ -13,7 +13,7 @@
 
 class WiredDevice {
 
-  // Device address (only 7 LSB bits).
+  // Device address (only 7 LSB).
   uint8_t deviceAddress;
 
 public:

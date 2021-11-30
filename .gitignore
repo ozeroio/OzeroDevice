@@ -31,3 +31,4 @@ cmake-build-debug
 
 CMakeListsPrivate.txt
 CMakeLists.txt
+cmake-build-pico/

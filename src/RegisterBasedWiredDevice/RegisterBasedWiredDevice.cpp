@@ -17,7 +17,7 @@ int16_t RegisterBasedWiredDevice::readRegisterBlock(uint8_t reg, uint8_t *buf, i
   Wire.write(reg);
   int16_t status = Wire.endTransmission(false);
   if (status > 0) {
-    return -(status);
+    return (int16_t) -status;
   }
   Wire.requestFrom((int16_t) getDeviceAddress(), len);
   while (!Wire.available() && --tries > 0) {
@@ -40,7 +40,7 @@ int16_t RegisterBasedWiredDevice::writeRegisterBlock(uint8_t reg, uint8_t *buff,
   Wire.beginTransmission(getDeviceAddress());
   Wire.write(reg);
   int16_t written = Wire.write(buff, len);
-  int8_t eot = Wire.endTransmission();
+  int16_t eot = Wire.endTransmission();
   if (eot > 0) {
     return (int16_t) -eot;
   }

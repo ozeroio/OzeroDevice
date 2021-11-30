@@ -2,6 +2,10 @@
 #include <Wire.h>
 #include "EepromBasedWiredDevice.h"
 
+#ifndef BUFFER_LENGTH
+#define BUFFER_LENGTH 32
+#endif
+
 EepromBasedWiredDevice::EepromBasedWiredDevice(uint8_t sdaPin, uint8_t sclPin, uint8_t deviceAddress)
     : WiredDevice(sdaPin, sclPin, deviceAddress), writeCycleTime(WRITE_CYCLE_TIME_MILLS) {
 }
@@ -39,8 +43,8 @@ int32_t EepromBasedWiredDevice::readBlock(int32_t address, uint8_t *buf, int32_t
   delay(writeCycleTime);
 
   // Underling libraries use a small buffer for i2c read.
-  // Also, some implementation use a uint8_t as len type.
-  // So, to be save, lets limit len to BUFFER_LENGTH
+  // Also, some implementation use an uint8_t as len type.
+  // So, to be safe, lets limit len to BUFFER_LENGTH
   if (len > BUFFER_LENGTH) {
     len = BUFFER_LENGTH;
   }
