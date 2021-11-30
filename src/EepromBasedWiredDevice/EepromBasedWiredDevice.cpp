@@ -70,6 +70,10 @@ void EepromBasedWiredDevice::setAddressSize(int8_t addressSize) {
   this->addressSize = addressSize;
 }
 
+void EepromBasedWiredDevice::setEndianness(int8_t endianness) {
+  this->endianness = endianness;
+}
+
 int8_t EepromBasedWiredDevice::getAddressSize() {
   return addressSize;
 }
