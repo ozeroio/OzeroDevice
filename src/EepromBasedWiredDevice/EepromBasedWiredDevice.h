@@ -6,11 +6,11 @@
  * @author Dalmir da Silva <dalmirdasilva@gmail.com>
  */
 
-#ifndef __OZEROIO_DEVICE_EEPROM_BASED_WIRED_DEVICE_H__
-#define __OZEROIO_DEVICE_EEPROM_BASED_WIRED_DEVICE_H__ 1
+#ifndef OZEROIO_DEVICE_EEPROM_BASED_WIRED_DEVICE_H
+#define OZEROIO_DEVICE_EEPROM_BASED_WIRED_DEVICE_H 1
 
 #include <WiredDevice/WiredDevice.h>
-#include <stdint.h>
+#include <cstdint>
 
 #define LITTLE_ENDIAN 0x00
 #define BIG_ENDIAN    0x01
@@ -39,7 +39,7 @@ class EepromBasedWiredDevice : public WiredDevice {
   uint8_t endianness;
 
   // While timed write cycle all inputs are disabled during this write cycle and the
-  // EEPROM will not respond until the write is complete.
+  // EEPROM will not respond until write is complete.
   uint8_t writeCycleTime;
 
 public:
@@ -58,13 +58,12 @@ public:
    *
    * @param deviceAddress         The wire address.
    */
-  EepromBasedWiredDevice(uint8_t deviceAddress);
+  explicit EepromBasedWiredDevice(uint8_t deviceAddress);
 
   /**
    * Virtual destructor;
    */
-  virtual ~EepromBasedWiredDevice() {
-  }
+  virtual ~EepromBasedWiredDevice() = default;
 
   /**
    * Writes a block of bytes into the device.
@@ -122,7 +121,7 @@ public:
    *
    * @returm addressSize
    */
-  int8_t getAddressSize();
+  int8_t getAddressSize() const;
 
   /**
    * Sets the write cycle time.
@@ -136,7 +135,7 @@ public:
    *
    * @returm writeCycleTime
    */
-  uint8_t getWriteCycleTime();
+  uint8_t getWriteCycleTime() const;
 };
 
-#endif /* __OZEROIO_DEVICE_EEPROM_BASED_WIRED_DEVICE_H__ */
+#endif /* OZEROIO_DEVICE_EEPROM_BASED_WIRED_DEVICE_H */

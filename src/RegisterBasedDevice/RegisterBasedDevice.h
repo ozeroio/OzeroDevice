@@ -4,8 +4,8 @@
  * @author Dalmir da Silva <dalmirdasilva@gmail.com>
  */
 
-#ifndef __OZEROIO_DEVICE_REGISTER_BASED_DEVICE_H__
-#define __OZEROIO_DEVICE_REGISTER_BASED_DEVICE_H__ 1
+#ifndef OZEROIO_DEVICE_REGISTER_BASED_DEVICE_H
+#define OZEROIO_DEVICE_REGISTER_BASED_DEVICE_H 1
 
 #include <stdint.h>
 
@@ -99,4 +99,4 @@ public:
   virtual int16_t writeRegisterBlock(uint8_t reg, uint8_t *buf, int16_t len) = 0;
 };
 
-#endif /* __OZEROIO_DEVICE_REGISTER_BASED_DEVICE_H__ */
+#endif /* OZEROIO_DEVICE_REGISTER_BASED_DEVICE_H */
