@@ -12,9 +12,6 @@
 #include <WiredDevice/WiredDevice.h>
 #include <cstdint>
 
-#define LITTLE_ENDIAN 0x00
-#define BIG_ENDIAN    0x01
-
 /**
  * EepromBasedWiredDevice represents a WiredDevice (i2c) that is has EEPROM finality.
  */
@@ -35,12 +32,9 @@ class EepromBasedWiredDevice : public WiredDevice {
   // Depending on the size of the eeprom, it might have 1 or 2 bytes of address.
   int8_t addressSize;
 
-  // Either one of LITTLE_ENDIAN or BIG_ENDIAN
-  uint8_t endianness;
-
   // While timed write cycle all inputs are disabled during this write cycle and the
   // EEPROM will not respond until write is complete.
-  uint8_t writeCycleTime;
+  uint16_t writeCycleTime;
 
 public:
 
@@ -110,13 +104,6 @@ public:
   void setAddressSize(int8_t addressSize);
 
   /**
-   * Sets endianness.
-   *
-   * @param endianness
-   */
-  void setEndianness(int8_t endianness);
-
-  /**
    * Gets the address size.
    *
    * @returm addressSize
@@ -128,7 +115,7 @@ public:
    *
    * @param writeCycleTime
    */
-  void setWriteCycleTime(uint8_t writeCycleTime);
+  void setWriteCycleTime(uint16_t writeCycleTime);
 
   /**
    * Gets the write cycle time.

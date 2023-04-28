@@ -9,7 +9,7 @@
 #ifndef OZEROIO_DEVICE_WIRED_DEVICE_H
 #define OZEROIO_DEVICE_WIRED_DEVICE_H 1
 
-#include <stdint.h>
+#include <cstdint>
 
 class WiredDevice {
 
@@ -23,7 +23,7 @@ public:
    *
    * @param address       The i2c device address.
    */
-  WiredDevice(uint8_t deviceAddress);
+  explicit WiredDevice(uint8_t deviceAddress);
 
   /**
    * Public constructor for esp8266 device.
