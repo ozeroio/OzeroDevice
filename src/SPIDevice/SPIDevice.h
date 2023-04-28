@@ -10,8 +10,7 @@
 class SPIDevice {
 
 public:
-
-  SPIDevice();
+	SPIDevice();
 };
 
 #endif /* OZEROIO_DEVICE_SPI_DEVICE_H */

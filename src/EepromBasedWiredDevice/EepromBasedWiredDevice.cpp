@@ -7,11 +7,11 @@
 #endif
 
 EepromBasedWiredDevice::EepromBasedWiredDevice(const uint8_t sdaPin, const uint8_t sclPin, const uint8_t deviceAddress)
-	: WiredDevice(sdaPin, sclPin, deviceAddress), addressSize(2), writeCycleTime(WRITE_CYCLE_TIME_MILLS) {
+	: WiredDevice(sdaPin, sclPin, deviceAddress), addressSize(2), writeCycleTime(WRITE_CYCLE_TIME_MICROS) {
 }
 
 EepromBasedWiredDevice::EepromBasedWiredDevice(const uint8_t deviceAddress)
-	: WiredDevice(deviceAddress), addressSize(2), writeCycleTime(WRITE_CYCLE_TIME_MILLS) {
+	: WiredDevice(deviceAddress), addressSize(2), writeCycleTime(WRITE_CYCLE_TIME_MICROS) {
 }
 
 int32_t EepromBasedWiredDevice::writeBlock(int32_t address, uint8_t *buf, int32_t len) {
@@ -78,6 +78,6 @@ void EepromBasedWiredDevice::setWriteCycleTime(const uint16_t writeCycleTime) {
 	this->writeCycleTime = writeCycleTime;
 }
 
-uint8_t EepromBasedWiredDevice::getWriteCycleTime() const {
+uint16_t EepromBasedWiredDevice::getWriteCycleTime() const {
 	return writeCycleTime;
 }

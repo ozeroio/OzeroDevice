@@ -2,5 +2,5 @@
 #include <SPI.h>
 
 SPIDevice::SPIDevice() {
-  SPI.begin();
+	SPI.begin();
 }
