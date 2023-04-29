@@ -9,6 +9,14 @@
 #ifndef OZEROIO_DEVICE_WIRED_DEVICE_H
 #define OZEROIO_DEVICE_WIRED_DEVICE_H 1
 
+#ifndef ozero_max
+#define ozero_max(x, y) (((x) > (y)) ? (x) : (y))
+#endif
+
+#ifndef ozero_min
+#define ozero_min(x, y) (((x) < (y)) ? (x) : (y))
+#endif
+
 #define OZEROIO_WIRE_NOT_VALID_ADDRESS 0xff
 
 #include <stdint.h>
