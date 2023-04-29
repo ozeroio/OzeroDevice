@@ -9,6 +9,8 @@
 #ifndef OZEROIO_DEVICE_WIRED_DEVICE_H
 #define OZEROIO_DEVICE_WIRED_DEVICE_H 1
 
+#define OZEROIO_WIRE_NOT_VALID_ADDRESS 0xff
+
 #include <stdint.h>
 
 class WiredDevice {
