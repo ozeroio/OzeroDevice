@@ -12,10 +12,11 @@ void setup() {
 	Serial.println("Initializing...");
 	device.setAddressSize(2);
 	device.setWriteCycleTime(5000);
-	uint8_t data[LEN] = {0};
-	uint8_t read[LEN] = {0};
-	for (unsigned char &i: data) {
-		i = random() % 0xff;
+	auto *data = new uint8_t[LEN];
+	auto *read = new uint8_t[LEN];
+	for (int i = 0; i < LEN; i++) {
+		data[i] = random() % 0xff;
+		read[i] = 0;
 	}
 	int address = 0;
 	Serial.print("Address: ");
@@ -37,6 +38,8 @@ void setup() {
 			Serial.println(read[i], HEX);
 		}
 	}
+	free(data);
+	free(read);
 	if (match) {
 		Serial.println("PASSED!");
 	}
