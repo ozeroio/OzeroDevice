@@ -19,7 +19,7 @@ int32_t EepromBasedWiredDevice::writeBlock(int32_t address, uint8_t *buf, int32_
 	for (int8_t i = addressSize; i > 0; i--) {
 		Wire.write((uint8_t) (address >> (i - 1) * 8));
 	}
-	auto bufferSpace = I2C_BUFFER_LENGTH - getAddressSize();
+	int32_t bufferSpace = I2C_BUFFER_LENGTH - getAddressSize();
 	int32_t written = Wire.write(buf, ozero_min(bufferSpace, len));
 	uint8_t eot = Wire.endTransmission();
 	if (eot != 0) {
