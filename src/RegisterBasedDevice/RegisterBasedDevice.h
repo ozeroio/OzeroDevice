@@ -7,7 +7,7 @@
 #ifndef OZEROIO_DEVICE_REGISTER_BASED_DEVICE_H
 #define OZEROIO_DEVICE_REGISTER_BASED_DEVICE_H 1
 
-#include <cstdint>
+#include <stdint.h>
 
 class RegisterBasedDevice {
 

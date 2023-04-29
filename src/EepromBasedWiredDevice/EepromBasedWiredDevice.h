@@ -10,7 +10,7 @@
 #define OZEROIO_DEVICE_EEPROM_BASED_WIRED_DEVICE_H 1
 
 #include <WiredDevice/WiredDevice.h>
-#include <cstdint>
+#include <stdint.h>
 
 /**
  * EepromBasedWiredDevice represents a WiredDevice (i2c) that is has EEPROM finality.

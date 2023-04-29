@@ -9,7 +9,7 @@
 #ifndef OZEROIO_DEVICE_WIRED_DEVICE_H
 #define OZEROIO_DEVICE_WIRED_DEVICE_H 1
 
-#include <cstdint>
+#include <stdint.h>
 
 class WiredDevice {
 
