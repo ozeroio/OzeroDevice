@@ -2,8 +2,13 @@
 #include <EepromBasedWiredDevice/EepromBasedWiredDevice.cpp>
 #include <EepromBasedWiredDevice/EepromBasedWiredDevice.h>
 #include <WiredDevice/WiredDevice.cpp>
-
-#define LEN 32
+#ifdef ARDUINO_ARCH_ESP32
+#include <freertos/FreeRTOS.h>
+// Not more than a page worth of data.
+#define LEN 64
+#else
+#define LEN 64
+#endif
 
 EepromBasedWiredDevice device(27, 26, 0x50);
 
@@ -46,5 +51,9 @@ void setup() {
 }
 
 void loop() {
-	delay(1);
+#ifdef ARDUINO_ARCH_ESP32
+	Serial.print("Free heap: ");
+	Serial.println(xPortGetFreeHeapSize());
+#endif
+	delay(1000);
 }
