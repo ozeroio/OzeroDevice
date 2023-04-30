@@ -9,16 +9,9 @@
 #ifndef OZEROIO_DEVICE_WIRED_DEVICE_H
 #define OZEROIO_DEVICE_WIRED_DEVICE_H 1
 
-#ifndef ozero_max
-#define ozero_max(x, y) (((x) > (y)) ? (x) : (y))
-#endif
-
-#ifndef ozero_min
-#define ozero_min(x, y) (((x) < (y)) ? (x) : (y))
-#endif
-
 #define OZEROIO_WIRE_NOT_VALID_ADDRESS 0xff
 
+#include <device.h>
 #include <stdint.h>
 
 class WiredDevice {
@@ -33,17 +26,6 @@ public:
 	 * @param address       The i2c device address.
 	 */
 	explicit WiredDevice(uint8_t deviceAddress);
-
-	/**
-	 * Public constructor for esp8266 device.
-	 *
-	 * NOTE: Only for devices that support custom data and clock pins.
-	 *
-	 * @param sdaPin        The wire data pin.
-	 * @param sclPin        The wire clock pin.
-	 * @param address       The i2c device address.
-	 */
-	WiredDevice(uint8_t sdaPin, uint8_t sclPin, uint8_t deviceAddress);
 
 	/**
 	 * Gets the device address.

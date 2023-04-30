@@ -2,19 +2,6 @@
 #include <Wire.h>
 
 WiredDevice::WiredDevice(const uint8_t deviceAddress) : deviceAddress(deviceAddress) {
-	if (deviceAddress != OZEROIO_WIRE_NOT_VALID_ADDRESS) {
-		Wire.begin();
-	}
-}
-
-WiredDevice::WiredDevice(const uint8_t sdaPin, const uint8_t sclPin, const uint8_t deviceAddress) : deviceAddress(deviceAddress) {
-	if (deviceAddress != OZEROIO_WIRE_NOT_VALID_ADDRESS) {
-#ifdef CUSTOM_WIRE_PINS_SUPPORT_ENABLED
-		Wire.begin(sdaPin, sclPin);
-#else
-		Wire.begin();
-#endif
-	}
 }
 
 uint8_t WiredDevice::getAddress() const {

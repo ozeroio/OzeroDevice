@@ -38,15 +38,6 @@ class EepromBasedWiredDevice : public WiredDevice {
 
 public:
 	/**
-	 * Public constructor for devices that support custom data and clock pins.
-	 *
-	 * @param sdaPin                The wire data pin.
-	 * @param sclPin                The wire clock pin.
-	 * @param deviceAddress         The wire address.
-	 */
-	EepromBasedWiredDevice(uint8_t sdaPin, uint8_t sclPin, uint8_t deviceAddress);
-
-	/**
 	 * Public constructor.
 	 *
 	 * @param deviceAddress         The wire address.

@@ -6,10 +6,6 @@
 #define I2C_BUFFER_LENGTH 32
 #endif
 
-EepromBasedWiredDevice::EepromBasedWiredDevice(const uint8_t sdaPin, const uint8_t sclPin, const uint8_t deviceAddress)
-	: WiredDevice(sdaPin, sclPin, deviceAddress), addressSize(2), writeCycleTime(WRITE_CYCLE_TIME_MICROS) {
-}
-
 EepromBasedWiredDevice::EepromBasedWiredDevice(const uint8_t deviceAddress)
 	: WiredDevice(deviceAddress), addressSize(2), writeCycleTime(WRITE_CYCLE_TIME_MICROS) {
 }

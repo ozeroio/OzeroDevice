@@ -22,16 +22,7 @@ public:
 	 *
 	 * @param deviceAddress       The wire address.
 	 */
-	RegisterBasedWiredDevice(uint8_t deviceAddress);
-
-	/**
-	 * Public constructor for devices that support custom data and clock pins.
-	 *
-	 * @param sdaPin                The wire data pin.
-	 * @param sclPin                The wire clock pin.
-	 * @param deviceAddress         The wire address.
-	 */
-	RegisterBasedWiredDevice(uint8_t sdaPin, uint8_t sclPin, uint8_t deviceAddress);
+	explicit RegisterBasedWiredDevice(uint8_t deviceAddress);
 
 	/**
 	 * Reads values from the device, starting by the reg register.
@@ -50,7 +41,7 @@ public:
 	 *                          <li>-5: timeout</li>
 	 *                      </ul>
 	 */
-	int16_t readRegisterBlock(uint8_t reg, uint8_t *buf, int16_t len);
+	int16_t readRegisterBlock(uint8_t reg, uint8_t *buf, int16_t len) override;
 
 	/**
 	 * Writes a sequence of values to a sequence of registers, starting by the reg address.
@@ -67,7 +58,7 @@ public:
 	 *                          <li>-4:other error</li>
 	 *                      </ul>
 	 */
-	int16_t writeRegisterBlock(uint8_t reg, uint8_t *buf, int16_t len);
+	int16_t writeRegisterBlock(uint8_t reg, uint8_t *buf, int16_t len) override;
 };
 
 #endif /* OZEROIO_DEVICE_REGISTER_BASED_WIRED_DEVICE_H */

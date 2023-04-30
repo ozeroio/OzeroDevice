@@ -7,13 +7,17 @@
 // Not more than a page worth of data.
 #define LEN 64
 #else
-#define LEN 64
+
+// Has to be <= than the buffer size (32) minus the address size (2)
+#define LEN 30
 #endif
 
-EepromBasedWiredDevice device(27, 26, 0x50);
+EepromBasedWiredDevice device(0x50);
 
 void setup() {
 	Serial.begin(115200);
+	Wire.begin();
+
 	Serial.println("Initializing...");
 	device.setAddressSize(2);
 	device.setWriteCycleTime(5000);
