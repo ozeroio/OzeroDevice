@@ -1,5 +1,6 @@
 {
   "name": "OzeroDevice",
+  "version": "1.0.0",
   "keywords": "bus device eeprom wire",
   "description": "Library to abstract external devices.",
   "repository": {
@@ -17,9 +18,15 @@
     {
       "name": "Wire",
       "frameworks": "arduino"
+    },
+    {
+      "name": "SPI",
+      "frameworks": "arduino"
     }
   ],
-  "version": "0.0.1",
   "frameworks": "arduino",
-  "platforms": "*"
+  "platforms": [
+    "atmelavr",
+    "espressif32"
+  ]
 }
