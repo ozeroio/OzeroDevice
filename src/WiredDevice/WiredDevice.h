@@ -11,7 +11,7 @@
 
 #define OZEROIO_WIRE_NOT_VALID_ADDRESS 0xff
 
-#include <device.h>
+#include <ozero.h>
 #include <stdint.h>
 
 class WiredDevice {

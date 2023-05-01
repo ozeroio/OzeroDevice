@@ -16,7 +16,12 @@ EepromBasedWiredDevice device(0x50);
 
 void setup() {
 	Serial.begin(115200);
+
+#ifdef ARDUINO_ARCH_ESP32
+	Wire.begin(27, 26);
+#else
 	Wire.begin();
+#endif
 
 	Serial.println("Initializing...");
 	device.setAddressSize(2);
