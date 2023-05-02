@@ -7,15 +7,15 @@
 #endif
 
 EepromBasedWiredDevice::EepromBasedWiredDevice(const uint8_t deviceAddress)
-	: WiredDevice(deviceAddress), addressSize(2), writeCycleTime(WRITE_CYCLE_TIME_MICROS) {
+	: WiredDevice(deviceAddress), addressSize(DEFAULT_ADDRESS_SIZE), writeCycleTime(WRITE_CYCLE_TIME_MICROS) {
 }
 
 int32_t EepromBasedWiredDevice::writeBlock(int32_t address, uint8_t *buf, int32_t len) {
-	Wire.beginTransmission(getAddress());
+	Wire.beginTransmission(maskedAddress(address));
 	for (int8_t i = addressSize; i > 0; i--) {
 		Wire.write((uint8_t) (address >> (i - 1) * 8));
 	}
-	int32_t bufferSpace = I2C_BUFFER_LENGTH - getAddressSize();
+	int32_t bufferSpace = I2C_BUFFER_LENGTH - addressSize;
 	int32_t written = Wire.write(buf, ozero_min(bufferSpace, len));
 	uint8_t eot = Wire.endTransmission();
 	if (eot != 0) {
@@ -29,13 +29,13 @@ int32_t EepromBasedWiredDevice::readBlock(const int32_t address, uint8_t *buf, i
 	int8_t tries = MAX_RETRIES_ON_READING;
 	int32_t i;
 
-	Wire.beginTransmission(getAddress());
-	for (i = addressSize; i > 0; i--) {
+	Wire.beginTransmission(maskedAddress(address));
+	for (i = ((int32_t) addressSize); i > 0; i--) {
 		Wire.write((uint8_t) (address >> (i - 1) * 8));
 	}
-	int8_t status = Wire.endTransmission();
+	uint8_t status = Wire.endTransmission();
 	if (status != 0) {
-		return (int32_t) (-status);
+		return -((int32_t) status);
 	}
 	delayMicroseconds(writeCycleTime);
 
@@ -46,7 +46,7 @@ int32_t EepromBasedWiredDevice::readBlock(const int32_t address, uint8_t *buf, i
 		len = I2C_BUFFER_LENGTH;
 	}
 
-	Wire.requestFrom((int16_t) getAddress(), len);
+	Wire.requestFrom((int16_t) maskedAddress(address), len);
 	while (!Wire.available() && --tries > 0) {
 		delayMicroseconds(RETRIES_DELAY_MICROS);
 	}
@@ -61,6 +61,10 @@ int32_t EepromBasedWiredDevice::readBlock(const int32_t address, uint8_t *buf, i
 		buf[i] = r & 0xff;
 	}
 	return i;
+}
+
+uint8_t EepromBasedWiredDevice::maskedAddress(int32_t memoryAddress) const {
+	return deviceAddress;
 }
 
 void EepromBasedWiredDevice::setAddressSize(const int8_t addressSize) {

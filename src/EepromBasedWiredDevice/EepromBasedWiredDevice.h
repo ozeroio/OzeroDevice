@@ -23,6 +23,9 @@ class EepromBasedWiredDevice : public WiredDevice {
 	// Time to sleep after unsuccessful read attempts.
 	const static uint8_t RETRIES_DELAY_MICROS = 100;
 
+	// Default address size
+	const static uint16_t DEFAULT_ADDRESS_SIZE = 2;
+
 	// Default write cycle time.
 	const static uint16_t WRITE_CYCLE_TIME_MICROS = 5000;
 
@@ -85,6 +88,17 @@ public:
 	 *                      </ul>
 	 */
 	virtual int32_t readBlock(int32_t address, uint8_t *buf, int32_t len);
+
+	/**
+	 * Some eeprom device use the address byte to encode memory address into it.
+	 *
+	 * Ex is 24c08, from datasheet: Following the A2 hardware slave address bit are bits A9 and A8 (bit 2 and bit 1 of the device address
+	 * byte), which are the two Most Significant bits of the memory array word address. Refer to Table 6-1 to
+	 * review these bit positions.
+	 *
+	 * @returm addressSize masked with memory address.
+	 */
+	virtual uint8_t maskedAddress(int32_t memoryAddress) const;
 
 	/**
 	 * Sets the address size.

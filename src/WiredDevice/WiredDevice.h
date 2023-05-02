@@ -16,6 +16,8 @@
 
 class WiredDevice {
 
+protected:
+
 	// Device address (only 7 LSB).
 	uint8_t deviceAddress;
 
