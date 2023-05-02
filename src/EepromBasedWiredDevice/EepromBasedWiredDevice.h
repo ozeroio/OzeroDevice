@@ -90,15 +90,12 @@ public:
 	virtual int32_t readBlock(int32_t address, uint8_t *buf, int32_t len);
 
 	/**
-	 * Some eeprom device use the address byte to encode memory address into it.
+	 * Override when using multiple eeprom on the same bus and willing to dynamically switch
+	 * between the using the address pointer.
 	 *
-	 * Ex is 24c08, from datasheet: Following the A2 hardware slave address bit are bits A9 and A8 (bit 2 and bit 1 of the device address
-	 * byte), which are the two Most Significant bits of the memory array word address. Refer to Table 6-1 to
-	 * review these bit positions.
-	 *
-	 * @returm addressSize masked with memory address.
+	 * @returm addressSize
 	 */
-	virtual uint8_t maskedAddress(int32_t memoryAddress) const;
+	virtual uint8_t dynamicAddress(int32_t memoryAddress) const;
 
 	/**
 	 * Sets the address size.

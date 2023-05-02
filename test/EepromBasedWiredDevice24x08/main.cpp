@@ -21,8 +21,9 @@ public:
 	// From datasheet: Following the A2 hardware slave address bit are bits A9 and A8 (bit 2 and bit 1 of the device address
 	// byte), which are the two Most Significant bits of the memory array word address. Refer to Table 6-1 to
 	// review these bit positions.
-	uint8_t maskedAddress(int32_t memoryAddress) const override {
-		// Set 9th and 10th bits as part of LSB of the device addess.
+	uint8_t dynamicAddress(int32_t memoryAddress) const override {
+
+		// Set A9 and A8 bits as part of LSB of the device address.
 		return (deviceAddress & 0xfc) | ((memoryAddress >> 8) & 0x03);
 	}
 };

@@ -11,7 +11,7 @@ EepromBasedWiredDevice::EepromBasedWiredDevice(const uint8_t deviceAddress)
 }
 
 int32_t EepromBasedWiredDevice::writeBlock(int32_t address, uint8_t *buf, int32_t len) {
-	Wire.beginTransmission(maskedAddress(address));
+	Wire.beginTransmission(dynamicAddress(address));
 	for (int8_t i = addressSize; i > 0; i--) {
 		Wire.write((uint8_t) (address >> (i - 1) * 8));
 	}
@@ -29,7 +29,7 @@ int32_t EepromBasedWiredDevice::readBlock(const int32_t address, uint8_t *buf, i
 	int8_t tries = MAX_RETRIES_ON_READING;
 	int32_t i;
 
-	Wire.beginTransmission(maskedAddress(address));
+	Wire.beginTransmission(dynamicAddress(address));
 	for (i = ((int32_t) addressSize); i > 0; i--) {
 		Wire.write((uint8_t) (address >> (i - 1) * 8));
 	}
@@ -46,7 +46,7 @@ int32_t EepromBasedWiredDevice::readBlock(const int32_t address, uint8_t *buf, i
 		len = I2C_BUFFER_LENGTH;
 	}
 
-	Wire.requestFrom((int16_t) maskedAddress(address), len);
+	Wire.requestFrom((int16_t) dynamicAddress(address), len);
 	while (!Wire.available() && --tries > 0) {
 		delayMicroseconds(RETRIES_DELAY_MICROS);
 	}
@@ -63,7 +63,7 @@ int32_t EepromBasedWiredDevice::readBlock(const int32_t address, uint8_t *buf, i
 	return i;
 }
 
-uint8_t EepromBasedWiredDevice::maskedAddress(int32_t memoryAddress) const {
+uint8_t EepromBasedWiredDevice::dynamicAddress(int32_t memoryAddress) const {
 	return deviceAddress;
 }
 
