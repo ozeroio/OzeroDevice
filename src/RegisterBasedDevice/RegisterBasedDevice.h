@@ -84,7 +84,7 @@ public:
 	 * @return              If >= 0: How many bytes were read.
 	 *                      If < 0: Error (see specific implementation)
 	 */
-	virtual int16_t readRegisterBlock(uint8_t reg, uint8_t *buf, int16_t len) = 0;
+	virtual int32_t readRegisterBlock(uint8_t reg, uint8_t *buf, int32_t len) = 0;
 
 	/**
 	 * Writes a sequence of values to a sequence of registers, starting by the reg address.
@@ -95,7 +95,7 @@ public:
 	 * @return              If >= 0: The number of bytes written into the register block.
 	 *                      If < 0: Error (see specific implementation)
 	 */
-	virtual int16_t writeRegisterBlock(uint8_t reg, uint8_t *buf, int16_t len) = 0;
+	virtual int32_t writeRegisterBlock(uint8_t reg, uint8_t *buf, int32_t len) = 0;
 };
 
 #endif /* OZEROIO_DEVICE_REGISTER_BASED_DEVICE_H */

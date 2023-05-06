@@ -17,9 +17,9 @@ int32_t EepromBasedWiredDevice::writeBlock(int32_t address, uint8_t *buf, int32_
 	}
 	int32_t bufferSpace = I2C_BUFFER_LENGTH - addressSize;
 	int32_t written = Wire.write(buf, ozero_min(bufferSpace, len));
-	uint8_t eot = Wire.endTransmission();
-	if (eot != 0) {
-		return (int32_t) (-eot);
+	int16_t status = Wire.endTransmission();
+	if (status > 0) {
+		return (int32_t) -status;
 	}
 	delayMicroseconds(writeCycleTime);
 	return written;
@@ -33,9 +33,9 @@ int32_t EepromBasedWiredDevice::readBlock(const int32_t address, uint8_t *buf, i
 	for (i = ((int32_t) addressSize); i > 0; i--) {
 		Wire.write((uint8_t) (address >> (i - 1) * 8));
 	}
-	uint8_t status = Wire.endTransmission();
-	if (status != 0) {
-		return -((int32_t) status);
+	int16_t status = Wire.endTransmission();
+	if (status > 0) {
+		return (int32_t) -status;
 	}
 	delayMicroseconds(writeCycleTime);
 

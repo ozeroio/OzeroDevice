@@ -41,7 +41,7 @@ public:
 	 *                          <li>-5: timeout</li>
 	 *                      </ul>
 	 */
-	int16_t readRegisterBlock(uint8_t reg, uint8_t *buf, int16_t len) override;
+	int32_t readRegisterBlock(uint8_t reg, uint8_t *buf, int32_t len) override;
 
 	/**
 	 * Writes a sequence of values to a sequence of registers, starting by the reg address.
@@ -58,7 +58,7 @@ public:
 	 *                          <li>-4:other error</li>
 	 *                      </ul>
 	 */
-	int16_t writeRegisterBlock(uint8_t reg, uint8_t *buf, int16_t len) override;
+	int32_t writeRegisterBlock(uint8_t reg, uint8_t *buf, int32_t len) override;
 };
 
 #endif /* OZEROIO_DEVICE_REGISTER_BASED_WIRED_DEVICE_H */

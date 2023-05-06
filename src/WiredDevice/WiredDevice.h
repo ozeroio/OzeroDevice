@@ -63,7 +63,7 @@ public:
 	 * @param b
 	 * @return 0 if not able to write, > 0 otherwise.
 	 */
-	uint8_t write(uint8_t b) const;
+	int16_t write(uint8_t b) const;
 
 	/**
 	 * Writes len bytes to the device.
@@ -71,7 +71,7 @@ public:
 	 * @param b
 	 * @return len of written bytes.
 	 */
-	uint32_t write(const uint8_t *b, uint32_t len) const;
+	int32_t write(const uint8_t *b, int32_t len) const;
 };
 
 #endif /* OZEROIO_DEVICE_WIRED_DEVICE_H */

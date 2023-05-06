@@ -6,14 +6,14 @@ RegisterBasedWiredDevice::RegisterBasedWiredDevice(uint8_t deviceAddress)
 	: RegisterBasedDevice(), WiredDevice(deviceAddress) {
 }
 
-int16_t RegisterBasedWiredDevice::readRegisterBlock(uint8_t reg, uint8_t *buf, int16_t len) {
+int32_t RegisterBasedWiredDevice::readRegisterBlock(uint8_t reg, uint8_t *buf, int32_t len) {
 	int8_t tries = MAX_RETRIES_ON_READING;
-	int16_t i;
+	int32_t i;
 	Wire.beginTransmission(getAddress());
 	Wire.write(reg);
 	int16_t status = Wire.endTransmission(false);
 	if (status > 0) {
-		return (int16_t) -status;
+		return (int32_t) -status;
 	}
 	Wire.requestFrom((int16_t) getAddress(), len);
 	while (!Wire.available() && --tries > 0) {
@@ -32,13 +32,13 @@ int16_t RegisterBasedWiredDevice::readRegisterBlock(uint8_t reg, uint8_t *buf, i
 	return i;
 }
 
-int16_t RegisterBasedWiredDevice::writeRegisterBlock(uint8_t reg, uint8_t *buff, int16_t len) {
+int32_t RegisterBasedWiredDevice::writeRegisterBlock(uint8_t reg, uint8_t *buff, int32_t len) {
 	Wire.beginTransmission(getAddress());
 	Wire.write(reg);
-	int16_t written = Wire.write(buff, len);
-	int16_t eot = Wire.endTransmission();
-	if (eot > 0) {
-		return (int16_t) -eot;
+	int32_t written = Wire.write(buff, len);
+	int16_t status = Wire.endTransmission();
+	if (status > 0) {
+		return (int32_t) -status;
 	}
 	return written;
 }

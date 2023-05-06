@@ -19,20 +19,29 @@ uint32_t WiredDevice::available() {
 int16_t WiredDevice::read() const {
 	Wire.requestFrom(deviceAddress, (uint8_t) 1);
 	int16_t v = Wire.read();
-	Wire.endTransmission();
+	int16_t status = Wire.endTransmission();
+	if (status > 0) {
+		return -status;
+	}
 	return v;
 }
 
-uint8_t WiredDevice::write(const uint8_t b) const {
+int16_t WiredDevice::write(const uint8_t b) const {
 	Wire.beginTransmission(deviceAddress);
-	uint8_t v = Wire.write(b);
-	Wire.endTransmission();
+	int16_t v = Wire.write(b);
+	int16_t status = Wire.endTransmission();
+	if (status > 0) {
+		return -status;
+	}
 	return v;
 }
 
-uint32_t WiredDevice::write(const uint8_t *b, const uint32_t len) const {
+int32_t WiredDevice::write(const uint8_t *b, const int32_t len) const {
 	Wire.beginTransmission(deviceAddress);
-	uint32_t v = Wire.write(b, len);
-	Wire.endTransmission();
-	return v;
+	int32_t written = Wire.write(b, len);
+	int16_t status = Wire.endTransmission();
+	if (status != 0) {
+		return (int32_t) -status;
+	}
+	return written;
 }
