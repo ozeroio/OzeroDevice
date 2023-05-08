@@ -61,4 +61,4 @@ public:
 	int32_t writeRegisterBlock(uint8_t reg, uint8_t *buf, int32_t len) override;
 };
 
-#endif /* OZEROIO_DEVICE_REGISTER_BASED_WIRED_DEVICE_H */
+#endif // OZEROIO_DEVICE_REGISTER_BASED_WIRED_DEVICE_H

@@ -8,10 +8,10 @@ int16_t RegisterBasedDevice::configureRegisterBits(const uint8_t reg, const uint
 		return n;
 	}
 
-	// Clears bits marked by bask.
+	// Clears bits marked by mask.
 	n &= ~mask;
 
-	// Sets bits marked by bask and data.
+	// Sets bits marked by mask and data.
 	n |= d & mask;
 	return writeRegister(reg, (uint8_t) n);
 }

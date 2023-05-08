@@ -51,19 +51,18 @@ public:
 	uint32_t available();
 
 	/**
+	 * Reads bytes from the device.
+	 *
+	 * @return -1 if not able to communicate with device, read len otherwise.
+	 */
+	int32_t read(uint8_t *b, int32_t len) const;
+
+	/**
 	 * Reads a byte from the device.
 	 *
 	 * @return -1 if not able to communicate with device, byte otherwise.
 	 */
 	int16_t read() const;
-
-	/**
-	 * Writes a byte to the device.
-	 *
-	 * @param b
-	 * @return 0 if not able to write, > 0 otherwise.
-	 */
-	int16_t write(uint8_t b) const;
 
 	/**
 	 * Writes len bytes to the device.
@@ -72,6 +71,14 @@ public:
 	 * @return len of written bytes.
 	 */
 	int32_t write(const uint8_t *b, int32_t len) const;
+
+	/**
+	 * Writes a byte to the device.
+	 *
+	 * @param b
+	 * @return 0 if not able to write, > 0 otherwise.
+	 */
+	int16_t write(uint8_t b) const;
 };
 
-#endif /* OZEROIO_DEVICE_WIRED_DEVICE_H */
+#endif // OZEROIO_DEVICE_WIRED_DEVICE_H

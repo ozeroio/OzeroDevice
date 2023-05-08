@@ -98,4 +98,4 @@ public:
 	virtual int32_t writeRegisterBlock(uint8_t reg, uint8_t *buf, int32_t len) = 0;
 };
 
-#endif /* OZEROIO_DEVICE_REGISTER_BASED_DEVICE_H */
+#endif // OZEROIO_DEVICE_REGISTER_BASED_DEVICE_H
