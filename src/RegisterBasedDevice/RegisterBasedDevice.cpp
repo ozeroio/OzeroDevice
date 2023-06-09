@@ -17,12 +17,12 @@ int16_t RegisterBasedDevice::configureRegisterBits(const uint8_t reg, const uint
 }
 
 int16_t RegisterBasedDevice::writeRegister(uint8_t reg, uint8_t d) {
-	return writeRegisterBlock(reg, &d, 1);
+	return (int16_t) writeRegisterBlock(reg, &d, 1);
 }
 
 int16_t RegisterBasedDevice::readRegister(const uint8_t reg) {
 	uint8_t c;
-	int16_t r = readRegisterBlock(reg, &c, 1);
+	auto r = (int16_t) readRegisterBlock(reg, &c, 1);
 	if (r < 0) {
 		return r;
 	}

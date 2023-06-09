@@ -63,6 +63,8 @@ int32_t EepromBasedWiredDevice::readBlock(const int32_t address, uint8_t *buf, i
 	return i;
 }
 
+// The default behavior of dynamicAddress is to ignore its parameter and return deviceAddress.
+// This means, the device address is not dictated by the memoryAddress param.
 uint8_t EepromBasedWiredDevice::dynamicAddress(int32_t memoryAddress) const {
 	return deviceAddress;
 }

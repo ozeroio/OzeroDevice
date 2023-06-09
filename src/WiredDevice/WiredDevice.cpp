@@ -13,7 +13,11 @@ void WiredDevice::setAddress(const uint8_t deviceAddress) {
 }
 
 uint32_t WiredDevice::available() {
-	return Wire.available();
+	auto available = Wire.available();
+	if (available < 0) {
+		return 0;
+	}
+	return available;
 }
 
 int32_t WiredDevice::read(uint8_t *b, int32_t len) const {
