@@ -21,7 +21,7 @@ uint32_t WiredDevice::available() {
 }
 
 int32_t WiredDevice::read(uint8_t *b, int32_t len) const {
-	int32_t readBytes = Wire.requestFrom(deviceAddress, len);
+	int32_t readBytes = Wire.requestFrom((int32_t) deviceAddress, len);
 	for (int32_t i = 0; i < readBytes; i++) {
 		b[i] = Wire.read();
 	}
@@ -46,7 +46,7 @@ int16_t WiredDevice::read() const {
 
 int32_t WiredDevice::write(const uint8_t *b, const int32_t len) const {
 	Wire.beginTransmission(deviceAddress);
-	int32_t written = Wire.write(b, len);
+	auto written = (int32_t) Wire.write(b, len);
 	int16_t status = Wire.endTransmission();
 	if (status > 0) {
 		return (int32_t) -status;

@@ -46,7 +46,7 @@ public:
 	 *
 	 * @return
 	 */
-	uint32_t available();
+	static uint32_t available();
 
 	/**
 	 * Reads bytes from the device.
