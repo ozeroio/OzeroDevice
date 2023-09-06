@@ -21,7 +21,7 @@ uint32_t WiredDevice::available() {
 }
 
 int32_t WiredDevice::read(uint8_t *b, int32_t len) const {
-	int32_t readBytes = Wire.requestFrom((int32_t) deviceAddress, len);
+	int32_t readBytes = Wire.requestFrom((int16_t) deviceAddress, len);
 	for (int32_t i = 0; i < readBytes; i++) {
 		b[i] = Wire.read();
 	}

@@ -1,6 +1,6 @@
 {
   "name": "OzeroDevice",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "keywords": "bus device eeprom wire",
   "description": "Library to abstract external devices.",
   "repository": {
