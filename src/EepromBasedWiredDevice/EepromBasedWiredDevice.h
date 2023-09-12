@@ -93,10 +93,10 @@ public:
 	 * Override when using multiple eeprom on the same bus and willing to dynamically switch
 	 * between them using the address pointer.
 	 *
-	 * Will combine the deviceAddress and the memoryAddress determine the final deviceAddress.
+	 *  It will combine the deviceAddress and the memoryAddress to determine the final deviceAddress.
 	 *
-	 * Some devices like 24x08 use the hardware address (deviceAddress) the internally address memory. So, to be able
-	 *  to access the entire device we must configure the deviceAddress byte.
+	 * Some devices like 24x08 use the hardware address (deviceAddress) to internally address memory.
+	 * So, to be able to access the entire device we must configure the deviceAddress byte.
 	 *
 	 * @returm addressSize
 	 */
