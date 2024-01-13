@@ -4,7 +4,7 @@
 void setup() {
 	Serial.begin(115200);
 
-#ifdef ARDUINO_ARCH_ESP32b
+#ifdef ARDUINO_ARCH_ESP32
 	//	Wire.begin(27, 26);
 	Wire.begin();
 #else

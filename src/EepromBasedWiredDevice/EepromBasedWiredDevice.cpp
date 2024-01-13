@@ -1,5 +1,4 @@
 #include "EepromBasedWiredDevice.h"
-#include <Arduino.h>
 #include <Wire.h>
 
 #ifndef I2C_BUFFER_LENGTH

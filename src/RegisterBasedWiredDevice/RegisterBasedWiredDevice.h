@@ -6,8 +6,8 @@
  * @author Dalmir da Silva <dalmirdasilva@gmail.com>
  */
 
-#ifndef OZEROIO_DEVICE_REGISTER_BASED_WIRED_DEVICE_H
-#define OZEROIO_DEVICE_REGISTER_BASED_WIRED_DEVICE_H 1
+#ifndef OZERO_DEVICE_REGISTER_BASED_WIRED_DEVICE_H
+#define OZERO_DEVICE_REGISTER_BASED_WIRED_DEVICE_H 1
 
 #include <RegisterBasedDevice/RegisterBasedDevice.h>
 #include <WiredDevice/WiredDevice.h>
@@ -61,4 +61,4 @@ public:
 	int32_t writeRegisterBlock(uint8_t reg, uint8_t *buf, int32_t len) override;
 };
 
-#endif // OZEROIO_DEVICE_REGISTER_BASED_WIRED_DEVICE_H
+#endif // OZERO_DEVICE_REGISTER_BASED_WIRED_DEVICE_H

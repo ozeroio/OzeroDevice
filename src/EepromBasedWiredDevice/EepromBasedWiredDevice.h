@@ -6,8 +6,8 @@
  * @author Dalmir da Silva <dalmirdasilva@gmail.com>
  */
 
-#ifndef OZEROIO_DEVICE_EEPROM_BASED_WIRED_DEVICE_H
-#define OZEROIO_DEVICE_EEPROM_BASED_WIRED_DEVICE_H 1
+#ifndef OZERO_DEVICE_EEPROM_BASED_WIRED_DEVICE_H
+#define OZERO_DEVICE_EEPROM_BASED_WIRED_DEVICE_H 1
 
 #include <WiredDevice/WiredDevice.h>
 #include <stdint.h>
@@ -131,4 +131,4 @@ public:
 	uint16_t getWriteCycleTime() const;
 };
 
-#endif // OZEROIO_DEVICE_EEPROM_BASED_WIRED_DEVICE_H
+#endif // OZERO_DEVICE_EEPROM_BASED_WIRED_DEVICE_H

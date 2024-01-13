@@ -6,8 +6,8 @@
  * @author Dalmir da Silva <dalmirdasilva@gmail.com>
  */
 
-#ifndef OZEROIO_DEVICE_WIRED_DEVICE_H
-#define OZEROIO_DEVICE_WIRED_DEVICE_H 1
+#ifndef OZERO_DEVICE_WIRED_DEVICE_H
+#define OZERO_DEVICE_WIRED_DEVICE_H 1
 
 #include <ozero.h>
 #include <stdint.h>
@@ -79,4 +79,4 @@ public:
 	int16_t write(uint8_t b) const;
 };
 
-#endif // OZEROIO_DEVICE_WIRED_DEVICE_H
+#endif // OZERO_DEVICE_WIRED_DEVICE_H
