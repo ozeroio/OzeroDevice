@@ -17,7 +17,12 @@ public:
 	 *
 	 * @param address       The wire address.
 	 */
-	RegisterBasedDevice();
+	RegisterBasedDevice() = default;
+
+	/**
+	 * Virtual destructor.
+	 */
+	virtual ~RegisterBasedDevice() = default;
 
 	/**
 	 * Configures a register.

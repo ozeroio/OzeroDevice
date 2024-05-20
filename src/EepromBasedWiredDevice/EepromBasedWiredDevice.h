@@ -48,11 +48,6 @@ public:
 	explicit EepromBasedWiredDevice(uint8_t deviceAddress);
 
 	/**
-	 * Virtual destructor;
-	 */
-	virtual ~EepromBasedWiredDevice() = default;
-
-	/**
 	 * Writes a block of bytes into the device.
 	 *
 	 * @param address         The address into the buffer with start be placed.

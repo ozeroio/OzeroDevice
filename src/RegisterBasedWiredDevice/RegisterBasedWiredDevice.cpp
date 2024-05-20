@@ -1,4 +1,5 @@
 #include "RegisterBasedWiredDevice.h"
+#include <Arduino.h>
 #include <Wire.h>
 
 RegisterBasedWiredDevice::RegisterBasedWiredDevice(uint8_t deviceAddress)

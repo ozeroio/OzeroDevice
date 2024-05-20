@@ -8,7 +8,7 @@
 #include <freertos/FreeRTOS.h>
 #endif
 
-RegisterBasedWiredDevice device(0x20);
+RegisterBasedWiredDevice device(0x50);
 
 void setup() {
 	Serial.begin(115200);

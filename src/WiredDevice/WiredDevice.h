@@ -28,6 +28,11 @@ public:
 	explicit WiredDevice(uint8_t deviceAddress);
 
 	/**
+	 * Virtual destructor.
+	 */
+	virtual ~WiredDevice() = default;
+
+	/**
 	 * Gets the device address.
 	 *
 	 * @return address
