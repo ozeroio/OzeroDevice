@@ -23,7 +23,7 @@ int32_t RegisterBasedWiredDevice::readRegisterBlock(uint8_t reg, uint8_t *buf, i
 		return -5;
 	}
 	for (i = 0; i < len && Wire.available(); i++) {
-		int16_t r = Wire.read();
+		auto r = (int16_t) Wire.read();
 		if (r < 0) {
 			break;
 		}
@@ -35,7 +35,7 @@ int32_t RegisterBasedWiredDevice::readRegisterBlock(uint8_t reg, uint8_t *buf, i
 int32_t RegisterBasedWiredDevice::writeRegisterBlock(uint8_t reg, uint8_t *buff, int32_t len) {
 	Wire.beginTransmission(getAddress());
 	Wire.write(reg);
-	int32_t written = Wire.write(buff, len);
+	auto written = (int32_t) Wire.write(buff, len);
 	int16_t status = Wire.endTransmission();
 	if (status > 0) {
 		return (int32_t) -status;

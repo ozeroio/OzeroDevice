@@ -8,14 +8,14 @@
 #include <freertos/FreeRTOS.h>
 #endif
 
-RegisterBasedWiredDevice device(0x50);
+RegisterBasedWiredDevice device(0x68);
 
 void setup() {
 	Serial.begin(115200);
 
 #ifdef ARDUINO_ARCH_ESP32
 	//	Wire.begin(27, 26);
-	Wire.begin();
+	Wire.begin(11, 12);
 #else
 	Wire.begin();
 #endif
@@ -26,7 +26,7 @@ void setup() {
 		Serial.print("Register(");
 		Serial.print(i, HEX);
 		Serial.print("): 0x");
-		Serial.println(device.readRegister(0), HEX);
+		Serial.println(device.getRegisterBits(i, 0x0f), HEX);
 	}
 }
 

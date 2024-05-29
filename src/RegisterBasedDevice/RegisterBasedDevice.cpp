@@ -1,5 +1,13 @@
 #include "RegisterBasedDevice.h"
 
+int16_t RegisterBasedDevice::getRegisterBits(const uint8_t reg, const uint8_t mask) {
+	int16_t n = readRegister(reg);
+	if (n < 0) {
+		return n;
+	}
+	return n & mask;
+}
+
 int16_t RegisterBasedDevice::configureRegisterBits(const uint8_t reg, const uint8_t mask, const uint8_t d) {
 	int16_t n = readRegister(reg);
 	if (n < 0) {

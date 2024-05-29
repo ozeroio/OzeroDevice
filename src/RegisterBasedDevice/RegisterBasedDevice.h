@@ -25,6 +25,16 @@ public:
 	virtual ~RegisterBasedDevice() = default;
 
 	/**
+	 * Get a register.
+	 *
+	 * @param reg           The register number.
+	 * @param mask          The mask to be used.
+	 * @return              If >= 0: Success.
+	 *                      If < 0: Error (see specific implementation)
+	 */
+	int16_t getRegisterBits(uint8_t reg, uint8_t mask);
+
+	/**
 	 * Configures a register.
 	 *
 	 * @param reg           The register number.

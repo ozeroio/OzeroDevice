@@ -22,6 +22,10 @@ uint32_t WiredDevice::available() {
 
 int32_t WiredDevice::read(uint8_t *b, int32_t len) const {
 	int32_t readBytes = Wire.requestFrom((int16_t) deviceAddress, len);
+
+	// Wire.readBytes() will translate internally to a look and a series
+	// of single read ops. Since it is times, it adds an overhead turning
+	// this implementation bellow faster.
 	for (int32_t i = 0; i < readBytes; i++) {
 		b[i] = Wire.read();
 	}
