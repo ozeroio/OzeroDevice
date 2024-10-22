@@ -47,13 +47,17 @@ int32_t EepromBasedWiredDevice::readBlock(const int32_t address, uint8_t *buf, i
 	}
 
 	Wire.requestFrom((int16_t) dynamicAddress(address), len);
-	while (!Wire.available() && --tries > 0) {
-		delayMicroseconds(RETRIES_DELAY_MICROS);
+	while (Wire.available() == 0 && --tries > 0) {
+
+		// This delay could be smaller than 1 millisecond, but being at least 1 millis
+		// allows RTOS systems to yield to other threads while waiting, avoiding
+		// unwanted and hard-to-debut watchdog resets.
+		delay(RETRIES_DELAY_MILLIS);
 	}
 	if (tries <= 0) {
 		return (int32_t) (-TIMEOUT_ERROR_CODE);
 	}
-	for (i = 0; i < len && Wire.available(); i++) {
+	for (i = 0; i < len && Wire.available() > 0; i++) {
 		int16_t r = Wire.read();
 		if (r < 0) {
 			break;
@@ -65,6 +69,9 @@ int32_t EepromBasedWiredDevice::readBlock(const int32_t address, uint8_t *buf, i
 
 // The default behavior of dynamicAddress is to ignore its parameter and return deviceAddress.
 // This means, the device address is not dictated by the memoryAddress param.
+// Derived classes can use the memoryAddress to derive dynamicAddress by combining
+// memoryAddress with deviceAddress. This is useful for memory modules that use the
+// deviceAddress pins to index different parts of their internal addresses.
 uint8_t EepromBasedWiredDevice::dynamicAddress(int32_t memoryAddress) const {
 	return deviceAddress;
 }

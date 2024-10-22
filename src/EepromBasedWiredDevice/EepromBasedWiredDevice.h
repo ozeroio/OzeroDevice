@@ -21,7 +21,7 @@ class EepromBasedWiredDevice : public WiredDevice {
 	const static uint8_t MAX_RETRIES_ON_READING = 0x7f;
 
 	// Time to sleep after unsuccessful read attempts.
-	const static uint8_t RETRIES_DELAY_MICROS = 100;
+	const static uint8_t RETRIES_DELAY_MILLIS = 1;
 
 	// Default address size
 	const static uint16_t DEFAULT_ADDRESS_SIZE = 2;
