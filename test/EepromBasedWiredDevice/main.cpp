@@ -47,7 +47,6 @@ void setup() {
 			Serial.print("FILED! AT ");
 			Serial.print(i);
 			Serial.print(": data[] = ");
-			Serial.print(": data[] = ");
 			Serial.print(data[i], HEX);
 			Serial.print(", read[] = ");
 			Serial.println(read[i], HEX);

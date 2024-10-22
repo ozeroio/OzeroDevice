@@ -68,7 +68,6 @@ void setup() {
 			Serial.print("FILED! AT ");
 			Serial.print(i);
 			Serial.print(": data[] = ");
-			Serial.print(": data[] = ");
 			Serial.print(data[i], HEX);
 			Serial.print(", read[] = ");
 			Serial.println(read[i], HEX);
@@ -82,7 +81,6 @@ void setup() {
 			match2 = false;
 			Serial.print("FILED! AT ");
 			Serial.print(i);
-			Serial.print(": data[] = ");
 			Serial.print(": data[] = ");
 			Serial.print(data2[i], HEX);
 			Serial.print(", read[] = ");
