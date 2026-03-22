@@ -33,3 +33,4 @@ CMakeListsPrivate.txt
 CMakeLists.txt
 cmake-build-pico/
 cmake-*
+.vscode

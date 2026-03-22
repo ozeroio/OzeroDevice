@@ -65,7 +65,7 @@ void setup() {
 	for (int i = 0; i < LEN; i++) {
 		if (data[i] != read[i]) {
 			match = false;
-			Serial.print("FILED! AT ");
+			Serial.print("FAILED! AT ");
 			Serial.print(i);
 			Serial.print(": data[] = ");
 			Serial.print(data[i], HEX);
@@ -79,7 +79,7 @@ void setup() {
 	for (int i = 0; i < LEN; i++) {
 		if (data2[i] != read[i]) {
 			match2 = false;
-			Serial.print("FILED! AT ");
+			Serial.print("FAILED! AT ");
 			Serial.print(i);
 			Serial.print(": data[] = ");
 			Serial.print(data2[i], HEX);

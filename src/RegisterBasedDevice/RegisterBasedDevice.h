@@ -73,8 +73,7 @@ public:
 	 * Writes a value to a register.
 	 *
 	 * @param reg           The register number.
-	 * @param d             The value to be used.
-	 * @param d             The value to be used.
+	 * @param d             The value to be written.
 	 * @return              If >= 0: Success.
 	 *                      If < 0: Error (see specific implementation)
 	 */

@@ -1,8 +1,6 @@
 /**
  * Ozeroio -  Register Based Wire Device
  *
- * RegisterBasedWiredDevice.h
- *
  * @author Dalmir da Silva <dalmirdasilva@gmail.com>
  */
 

@@ -39,9 +39,9 @@ int32_t EepromBasedWiredDevice::readBlock(const int32_t address, uint8_t *buf, i
 	}
 	delayMicroseconds(writeCycleTime);
 
-	// Underling libraries use a small buffer for i2c read.
-	// Also, some implementation use an uint8_t as len type.
-	// So, to be safe, lets limit len to BUFFER_LENGTH
+	// Underlying libraries use a small buffer for I2C reads.
+	// Also, some implementations use uint8_t as the len type.
+	// To be safe, limit len to I2C_BUFFER_LENGTH.
 	if (len > I2C_BUFFER_LENGTH) {
 		len = I2C_BUFFER_LENGTH;
 	}
@@ -51,7 +51,7 @@ int32_t EepromBasedWiredDevice::readBlock(const int32_t address, uint8_t *buf, i
 
 		// This delay could be smaller than 1 millisecond, but being at least 1 millis
 		// allows RTOS systems to yield to other threads while waiting, avoiding
-		// unwanted and hard-to-debut watchdog resets.
+		// unwanted and hard-to-debug watchdog resets.
 		delay(RETRIES_DELAY_MILLIS);
 	}
 	if (tries <= 0) {

@@ -1,7 +1,5 @@
 /**
- * Ozeroio -  Register Based Wire Device
- *
- * RegisterBasedWireDevice.h
+ * Ozeroio - EEPROM Based Wired Device
  *
  * @author Dalmir da Silva <dalmirdasilva@gmail.com>
  */
@@ -13,7 +11,7 @@
 #include <stdint.h>
 
 /**
- * EepromBasedWiredDevice represents a WiredDevice (i2c) that is has EEPROM finality.
+ * EepromBasedWiredDevice represents a WiredDevice (I2C) that provides EEPROM memory access.
  */
 class EepromBasedWiredDevice : public WiredDevice {
 
@@ -50,7 +48,7 @@ public:
 	/**
 	 * Writes a block of bytes into the device.
 	 *
-	 * @param address         The address into the buffer with start be placed.
+	 * @param address         The memory address at which to start writing.
 	 * @param buf             The array of bytes to write into the device.
 	 * @param len             The length of the buffer.
 	 * @return                If >= 0: How many bytes were written.
@@ -67,7 +65,7 @@ public:
 	/**
 	 * Reads a block of bytes from the device.
 	 *
-	 * Sends the address MSB fist.
+	 * Sends the address MSB first.
 	 *
 	 * @param address       The register address.
 	 * @param buf           The buffer where to place read bytes.
@@ -93,7 +91,7 @@ public:
 	 * Some devices like 24x08 use the hardware address (deviceAddress) to internally address memory.
 	 * So, to be able to access the entire device we must configure the deviceAddress byte.
 	 *
-	 * @returm addressSize
+	 * @returnaddressSize
 	 */
 	virtual uint8_t dynamicAddress(int32_t memoryAddress) const;
 
@@ -107,7 +105,7 @@ public:
 	/**
 	 * Gets the address size.
 	 *
-	 * @returm addressSize
+	 * @returnaddressSize
 	 */
 	int8_t getAddressSize() const;
 
@@ -121,7 +119,7 @@ public:
 	/**
 	 * Gets the write cycle time.
 	 *
-	 * @returm writeCycleTime
+	 * @returnwriteCycleTime
 	 */
 	uint16_t getWriteCycleTime() const;
 };

@@ -1,8 +1,6 @@
 /**
  * Ozeroio -  Wired Device
  *
- * WiredDevice.h
- *
  * @author Dalmir da Silva <dalmirdasilva@gmail.com>
  */
 
