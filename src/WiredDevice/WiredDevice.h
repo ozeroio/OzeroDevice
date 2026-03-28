@@ -7,13 +7,11 @@
 #ifndef OZERO_DEVICE_WIRED_DEVICE_H
 #define OZERO_DEVICE_WIRED_DEVICE_H 1
 
-#include <ozero.h>
 #include <stdint.h>
 
 class WiredDevice {
 
 protected:
-
 	// Device address (only 7 LSB).
 	uint8_t deviceAddress;
 
@@ -82,4 +80,4 @@ public:
 	int16_t write(uint8_t b) const;
 };
 
-#endif // OZERO_DEVICE_WIRED_DEVICE_H
+#endif// OZERO_DEVICE_WIRED_DEVICE_H

@@ -73,5 +73,4 @@ Formatted with clang-format (LLVM base). Key rules:
 - Return values: `>= 0` success, `< 0` error code
 - Headers use include guards (`#ifndef OZERO_DEVICE_*_H`)
 - All classes have `virtual ~ClassName() = default`
-- Use `ozero_min` / `ozero_max` macros from `<ozero.h>` instead of `std::min/max` (avoids Arduino framework conflicts)
 - `src/` is the `include_dir` — include as `#include <ClassName/ClassName.h>`
